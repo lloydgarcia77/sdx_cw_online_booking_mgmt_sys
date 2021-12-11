@@ -167,9 +167,9 @@ class Staff(models.Model):
 class InquiriesModel(models.Model):
   
  
-    f_name = models.CharField(max_length=10,)
-    l_name = models.CharField(max_length=10,)
-    subject = models.CharField(max_length=10,)
+    f_name = models.CharField(max_length=100,)
+    l_name = models.CharField(max_length=100,)
+    subject = models.CharField(max_length=100,)
     message = models.TextField()
     email = models.EmailField(max_length=55,) 
     date_created = models.DateTimeField(auto_now_add=True)
