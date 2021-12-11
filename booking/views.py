@@ -27,7 +27,7 @@ from booking import (
     models,
     forms, 
 )
-import json, os, pytz, dateutil.parser, operator
+import json, os, pytz, operator
 
 # Decorator
 def roles(**user_type):
