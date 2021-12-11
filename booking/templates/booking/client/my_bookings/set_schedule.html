@@ -1,0 +1,127 @@
+{% extends 'booking/base.html' %}
+{% load static %}
+{% load humanize%}
+
+{% block title %}
+| My Bookings - Set Schedule
+{% endblock title%} 
+
+
+{% block additional_css %}       
+<link href="{% static 'js/jquery-ui-1.13.0/jquery-ui.css' %}" rel="stylesheet">
+<link href="{% static 'js/jquery-ui-1.13.0/jquery-ui.min.css' %}" rel="stylesheet">
+<style>
+    #datepicker-container{
+        text-align:center;
+    }
+    #datepicker-center{
+        display:inline-block;
+        margin:0 auto;
+    }
+</style>
+{% endblock additional_css %} 
+
+{% block nav_my_bookings %}
+<li class="nav-item active">
+    <a class="nav-link" href="{% url 'booking:my_bookings' %}">
+        <i class="fas fa-address-book"></i>
+        <span>My Bookings</span></a>
+</li>
+{% endblock nav_my_bookings %}
+
+{% block body_block %} 
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Set Schedule Details for "{{ obj.name }}" </h1>
+</div>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-danger">Set Schedule Details</h6>
+    </div>
+    <div class="card-body" >  
+        <p>{{ obj.desription }}</p> 
+        <ul>
+            <li><b>Vehicle type:</b> <strong><u>{{ obj.vehicle_type }}</u></strong></li>
+            <li><b>Cost: </b> <strong><u>₱-{{ obj.price|intcomma }}</u></strong></li>
+            <li><b>Duration: </b><strong><u>{{ obj.duration }}</u></strong>.</li> 
+        </ul>
+        <hr>
+        <div class="row">
+            <div class="col-lg-6"> 
+                <div class="card mb-4">
+                    <div class="card-header bg-success text-white">
+                        Set Date
+                    </div>
+                    <div class="card-body">
+                        <div id="datepicker-container">
+                            <div id="datepicker-center">
+                              <div id="datepicker"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <p class="text-center" style="margin: 0;">
+                            <b>Note: </b> <u>All grayed out or unselectable dates are fully booked or invalid date.</u>
+                        </p>
+                    </div>
+                </div> 
+            </div>
+            <div class="col-lg-6"> 
+                <div class="card mb-4">
+                    <div class="card-header bg-info text-white">
+                        Set Time:
+                    </div>
+                    <div class="card-body">  
+                        <div class="form-group">
+                            <label for="select-slot"><b>Select Slot:</b></label>
+                            <select class="form-control" id="select-slot">
+
+                              <option>Slot 1</option>
+                              <option>Slot 2</option>
+                              <option>Slot 3</option> 
+                            </select>
+                        </div>
+                        <hr>
+                        <div class="form-group" >
+                            <label><b>Select Time:</b></label> 
+
+                            <div id="time-schedule-container"> 
+
+                            </div>
+                        
+                           
+                        </div>
+                    </div>
+                </div> 
+            </div>
+
+        </div> 
+        <hr>
+        <div class="float-right"> 
+            <a href="{% url 'booking:my_bookings' %}" class="btn btn-secondary btn-user">
+                <i class="fas fa-arrow-left fa-sm text-white-50"></i>
+                Back
+            </a> 
+            <button type="button" class="btn btn-success btn-user" onclick="location.reload()"> 
+                <i class="fas fa-redo text-white-50"></i>
+                Refresh
+            </button>
+            <button type="button" class="btn btn-primary btn-user btn-book" data-url="{{ obj.get_absolute_url_set_schedule }}"> 
+                <i class="fas fa-book  fa-sm text-white-50"></i>
+                Book
+            </button>
+        </div>
+    </div>
+</div>
+ 
+
+{% endblock body_block %}
+
+{% block additional_js %} 
+<script src="{% static 'js/getcookies.js' %}"></script>   
+<!-- <script src="{% static 'js/jquery-ui-1.13.0/external/jquery/jquery.js' %}"></script> -->
+<script src="{% static 'js/jquery-ui-1.13.0/jquery-ui.js' %}"></script>
+<script src="{% static 'js/jquery-ui-1.13.0/jquery-ui.min.js' %}"></script> 
+{{ schedule_data|json_script:"schedule_data" }}
+<script src="{% static 'js/bookings/client/my_bookings/set_schedule.js' %}"></script>
+{% endblock additional_js %}

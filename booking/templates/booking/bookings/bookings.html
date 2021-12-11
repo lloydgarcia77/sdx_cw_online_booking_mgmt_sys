@@ -1,0 +1,97 @@
+{% extends 'booking/base.html' %}
+{% load static %}
+{% load humanize %}
+{% load custom_tags %}
+
+{% block title %}
+| Bookings
+{% endblock title%} 
+
+
+{% block additional_css %}    
+<style>
+    .client-details img{
+        display: block; 
+        margin: auto; 
+        border-radius: 50%; 
+        height: 100px;
+        width: 100px;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+        margin-bottom: 30px;
+    }
+    .client-details p{
+        margin: 5px;
+    }
+</style>
+{% endblock additional_css %} 
+
+{% block nav_bookings %}
+<li class="nav-item active">
+    <a class="nav-link" href="{% url 'booking:bookings' %}">
+        <i class="fas fa-book"></i>
+        <span>Bookings</span></a>
+</li> 
+{% endblock nav_bookings %}
+  
+{% block body_block %} 
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Client Bookings</h1>
+</div>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-danger">Services Table</h6>
+    </div>
+    <div class="card-body" > 
+        <div class="table-horizontal-scroll">
+            <table id="table-client-bookings" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th class="text-center">ID</th> 
+                        <th class="text-center">Service</th> 
+                        <th class="text-center">Date</th> 
+                        <th class="text-center">Slot</th>  
+                        <th class="text-center">Time Slot</th>
+                        <th class="text-center">Date Created</th> 
+                        <th class="text-center" style="width: 20%;">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for o in bookings %}
+                     <tr>
+                         <td>{{ o.id }}</td> 
+                         <td>{{ o.service }}</td>
+                         <td>{{ o.date }}</td>
+                         <td>{{ o.slot }}</td>
+                         <td>{{ o.time_slot|time }}</td>
+                         <td>{{ o.date_created|naturaltime }}</td> 
+                         <td>  
+                        
+                            <div class="btn-group" role="group" aria-label="button group"> 
+                                <a href="{{ o.get_absolute_url_view_full_details }}" class="btn btn-warning btn-sm view">
+                                    <i class="fas fa-eye"></i>  View
+                                </a> 
+                                <a href="{{ o.get_absolute_url_reject_booking }}" class="btn btn-danger btn-sm delete">
+                                    <i class="fas fa-trash-alt"></i> Reject
+                                </a> 
+                                <a href="{{ o.get_absolute_url_invoice }}" class="btn btn-success btn-sm invoice">
+                                    <i class="fas fa-clipboard-check"></i> Invioce
+                                </a> 
+                            </div>
+                         
+                         </td>
+                     </tr>
+                    {% endfor %}
+                </tbody>
+            </table> 
+        </div> 
+    </div>
+</div>
+ 
+
+{% endblock body_block %}
+
+{% block additional_js %} 
+<script src="{% static 'js/getcookies.js' %}"></script>
+<script src="{% static 'js/bookings/bookings/bookings.js' %}"></script>
+{% endblock additional_js %}

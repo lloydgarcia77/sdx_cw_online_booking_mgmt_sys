@@ -1,0 +1,17 @@
+<form class="invoice-client-booking" method="POST" data-url="{{ obj.get_absolute_url_invoice }}">
+    {% csrf_token %}
+    <div class="modal-header">
+        <h5 class="modal-title" id="modalDefaultLabel">Invoice Client Booking</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <div class="modal-body">
+         <p>Do you want to <strong style="color: green;">INVOICE</strong> this client booking service?</p>
+         <p><b>Note:</b> It will <strong style="color: red;">DELETED</strong> from the client booking and spare the setted schedule, Do you wish to continue? </p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-success" type="submit">Process</button> 
+    </div>
+</form>

@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html> 
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="icon" href="{% static 'images/Speed_Driven_Logo.ico' %}">
+        <title>
+            Speed Driven Xavierville
+            {% block title %}
+            {% endblock title%}
+        </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% block css %} 
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+        <link href="{% static 'js/jquery-ui-1.13.0/jquery-ui.css' %}" rel="stylesheet">
+        <link href="{% static 'js/jquery-ui-1.13.0/jquery-ui.min.css' %}" rel="stylesheet">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap');
+            body{
+                padding: 0;
+                margin: 0;
+                font-family: 'Roboto', sans-serif;
+            }
+        </style>
+        {% endblock css %} 
+
+        {% block additional_css %} 
+        {% endblock additional_css %} 
+    </head>
+    <body> 
+        {% block body_block %} 
+        {% endblock body_block %}
+
+        {% block js %} 
+        <script src="{% static 'js/jquery-ui-1.13.0/external/jquery/jquery.js' %}"></script>
+        <script src="{% static 'js/jquery-ui-1.13.0/jquery-ui.js' %}"></script>
+        <script src="{% static 'js/jquery-ui-1.13.0/jquery-ui.min.js' %}"></script>
+        {% endblock js %} 
+    
+        {% block additional_js %} 
+        {% endblock additional_js %}
+    </body>
+</html>

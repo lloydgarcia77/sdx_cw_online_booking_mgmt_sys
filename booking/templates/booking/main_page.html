@@ -1,0 +1,204 @@
+{% extends 'booking/base.html' %}
+{% load humanize %}
+{% load custom_tags %}
+{% block title %}
+| Dashboard
+{% endblock title%} 
+
+
+{% block additional_css %} 
+{% endblock additional_css %} 
+
+{% block nav_dashboard %} 
+<li class="nav-item active">
+    <a class="nav-link" href="{% url 'booking:main_page' %}">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Dashboard</span></a>
+</li> 
+{% endblock nav_dashboard %}
+
+{% block body_block %} 
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+</div>
+
+
+{%  if request.user.is_active and request.user.is_staff and request.user.role == 'Administrator' %}
+<div class="row">
+
+     
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                            Total (Users)</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{% get_user_count %}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-users fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                            Total (Staffs)</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{% get_staff_count %}</div>
+                    </div>
+                    <div class="col-auto"> 
+                        <i class="fas fa-user-tie fa-2x text-gray-300"></i> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-info shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                            Inquiries</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{% get_inquiries_count %}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-comments fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                            Bookings</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{% get_bookings_count %}</div>
+                    </div>
+                    <div class="col-auto"> 
+                        <i class="fas fa-book  fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+</div>
+
+<div class="row">
+    
+     
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                            Total (Services)</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{% get_service_model_count %}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-car fa-2x text-gray-300"></i> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                            Total (Invoice Booking)</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{% get_invoice_booking_count %}</div>
+                    </div>
+                    <div class="col-auto">  
+                        <i class="fas fa-money-bill-wave fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-left-info shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                            Total (Walk-In Invoice)</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{% get_walkin_invoice_count %}</div>
+                    </div>
+                    <div class="col-auto"> 
+                        <i class="fas fa-walking fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %} 
+{% if request.user.is_active and request.user.role == 'Client' %}
+<div class="row">
+    
+                
+    <div class="col-xl-6 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                            Total (Services)</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{% get_service_model_count %}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-car fa-2x text-gray-300"></i> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     
+    <div class="col-xl-6 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                            My Bookings</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{% get_my_bookings_count request %}</div>
+                    </div>
+                    <div class="col-auto"> 
+                        <i class="fas fa-book-reader fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+ 
+{% endif %}
+
+
+{% endblock body_block %}
+
+{% block additional_js %} 
+{% endblock additional_js %}
+
+
+<!-- Create 2 seperate dashboard for admin and client -->

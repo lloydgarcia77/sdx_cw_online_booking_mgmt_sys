@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+| Login Page
+{% endblock title%}
+ 
+{% block additional_css %} 
+<link rel="stylesheet" href="{% static 'css/registration/registration.css' %}">
+<link rel="stylesheet" href="{% static 'css/registration/login.css' %}">
+<link rel="stylesheet" href="{% static 'css/registration/custom-alert.css' %}"> 
+{% endblock additional_css %} 
+
+
+{% block body_block %} 
+<div class="container">
+  <div class="form-container">
+
+    <div class="logo-details"> 
+      <img src="{% static 'images/Speed_Driven_Logo.png' %}" alt="No Image Available">
+      <h1>SPEED driven Xavierville</h1>
+    </div>
+    
+    <form method="POST">
+      {% csrf_token %}
+
+      {% include 'partials/_messages_custom.html' %}   
+
+      <h1>MEMber login</h1>
+      <div class="input-container">
+        <i class="fas fa-envelope"></i>
+        <input class="input-field" type="email" placeholder="E-Mail" name="email" required>
+      </div>
+      <div class="input-container">
+        <i class="fas fa-lock"></i>
+        <input class="input-field" type="password" placeholder="Password" name="password" required>
+      </div> 
+
+      <input type="submit" value="Login">
+
+      <div class="links">
+        <p><span><a href="{% url 'password_reset' %}">Forgot password?</a></span> | <span><a href="{% url 'registration_page' %}">Sign-up for free</a></span></p>
+        <p><a href="{% url 'booking:index_page' %}"><i class="fas fa-arrow-left"></i>  Back to home page</a></p>
+      </div> 
+
+    </form>
+
+  </div>
+
+</div>
+{% endblock body_block %}
+
+{% block additional_js %}  
+<script src="{% static 'js/registration/registration.js' %}"></script>
+<script src="{% static 'js/registration/custom-alert.js' %}"></script>
+  
+{% endblock additional_js %}

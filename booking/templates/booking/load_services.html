@@ -1,0 +1,17 @@
+{% load humanize %}
+{% for o in obj %}
+<div class="price-item">
+    <div class="price-item-header">
+        <h3>{{ o.name }}</h3>
+        <h2>
+            <span>₱</span><strong>{{ o.price|intcomma }}</strong><span>.00</span>
+        </h2>
+    </div>
+    <div class="price-item-body">
+        <p><i class="far fa-check-circle"></i>  For {{ o.duration}} Only </p> 
+    </div>
+    <div class="price-item-footer">
+        <button onclick="window.location.href = '/my-bookings/'">Book Now</button> 
+    </div>
+</div>
+{% endfor %}

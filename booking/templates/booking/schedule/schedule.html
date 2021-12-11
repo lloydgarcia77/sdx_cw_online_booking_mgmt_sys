@@ -1,0 +1,117 @@
+{% extends 'booking/base.html' %}
+{% load static %}
+{% load humanize %}
+{% load custom_tags %}
+
+{% block title %}
+| Schedules
+{% endblock title%} 
+
+
+{% block additional_css %}     
+<link href="{% static 'js/jquery-ui-1.13.0/jquery-ui.css' %}" rel="stylesheet">
+<link href="{% static 'js/jquery-ui-1.13.0/jquery-ui.min.css' %}" rel="stylesheet">
+<style>
+    #datepicker-container{
+        text-align:center;
+    }
+    #datepicker-center{
+        display:inline-block;
+        margin:0 auto;
+    }
+    i .fas fa-times{
+        color: chartreuse !important;
+    }
+</style>
+{% endblock additional_css %} 
+
+{% block nav_schedule %}
+<li class="nav-item active">
+    <a class="nav-link" href="{% url 'booking:schedules' %}">
+        <i class="fas fa-calendar"></i>
+        <span>Schedule</span></a>
+</li>
+{% endblock nav_schedule %}
+  
+{% block body_block %} 
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Schedules</h1>
+</div>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-danger">All Schedule Details</h6>
+    </div>
+    <div class="card-body" > 
+        <div class="row">
+            <div class="col-lg-6"> 
+                <div class="card mb-4">
+                    <div class="card-header bg-success text-white">
+                        Calendar Date Selection
+                    </div>
+                    <div class="card-body">
+                        <div id="datepicker-container">
+                            <div id="datepicker-center">
+                              <div id="datepicker" data-url="{% url 'booking:schedules' %}"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <p class="text-center" style="margin: 0;">
+                            <b>Note: </b> <u>Select a date from calendar to view schedule.</u>
+                        </p>
+                    </div>
+                </div> 
+            </div>
+            <div class="col-lg-6"> 
+                <div class="card mb-4">
+                    <div class="card-header bg-info text-white">
+                        Time Schedule:
+                    </div>
+                    <div class="card-body">   
+                        <div class="form-group">
+                            <table class="table table-bordered ">
+                                <tr> 
+                                    <td colspan="2">Legend: </td>
+                                </tr>
+                                <tr>
+                                    <td>Available ( <i class="fas fa-times" style="color:red;"></i> )</td>
+                                    <td>Occupied ( <i class="fas fa-check" style="color:green;"></i> )</td>
+                                </tr> 
+                            </table>
+                        </div>
+                        <div class="form-group" > 
+                            <table id="table_schedule"  class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Time:</th>
+                                        <th class="text-center">Slot 1</th>
+                                        <th class="text-center">Slot 2</th>
+                                        <th class="text-center">Slot 3</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                                <tfoot class="text-center">
+                           
+                                </tfoot>
+                            </table> 
+                        </div>
+                    </div>
+                </div> 
+            </div>
+
+        </div> 
+    </div>
+</div>
+ 
+
+{% endblock body_block %}
+
+{% block additional_js %} 
+<script src="{% static 'js/getcookies.js' %}"></script>
+<script src="{% static 'js/jquery-ui-1.13.0/jquery-ui.js' %}"></script>
+<script src="{% static 'js/jquery-ui-1.13.0/jquery-ui.min.js' %}"></script> 
+<script src="{% static 'js/bookings/schedule/schedule.js' %}"></script>
+{% endblock additional_js %}

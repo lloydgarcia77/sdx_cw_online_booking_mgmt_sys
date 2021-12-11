@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %} 
+{% load custom_tags %}
+
+{% block title %}
+| Home Page
+{% endblock title%}
+
+{% block additional_css %} 
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock additional_css %} 
+
+{% block body_block %} 
+<nav>
+    <a href="#body_home">Home</a>
+    <a href="#body_services">services</a>
+    <a href="#body_our_work">our work</a>
+    <a href="#body_about_us">about us</a>
+    <a href="#body_contact_us">contact us</a>
+    <a href="#body_book_now">book now</a>
+    <a href="{% url 'login' %}" class="sign-in">Sign in</a>
+</nav>
+<div id="body_home" class="body home">
+    <div class="logo-details-container"> 
+        <img src="{% static 'images/Speed_Driven_Logo.png' %}" alt="Speed Driven Xavier">
+        <h1>SPEED driven Xavierville</h1>
+        <div class="social-media-links">
+            <a href=""><i class="fab fa-facebook"></i></a>
+            <a href=""><i class="fab fa-twitter"></i></a>
+            <a href=""><i class="fab fa-youtube"></i></a>
+            <a href=""><i class="fab fa-instagram"></i></a>
+            <a href=""><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </div>
+</div>
+<div id="body_services" class="body services">
+    <p class="title">what do we do?</p>
+    <h1 class="title">Services</h1>
+    <div class="services-list">
+        <div class="services-item">
+            <img src="{% static 'images/carwash.png' %}" alt="carwash">
+            <h3>car wash</h3>
+            <p>We’re proud to provide community members with top-notch service. 
+                Our clients love working with us, many of them returning as 
+                repeat customers. Get in touch to let us know what we can do 
+                for you today.</p>
+        </div>
+        <div class="services-item">
+            <img src="{% static 'images/interior.png' %}" alt="carwash">
+            <h3>interior washing</h3>
+            <p>Speed Driven Xavierville is dedicated to providing high quality services 
+                to the CITY area. Take a look below to find out what we
+                specialize in, and get in touch with any additional questions or to 
+                learn more.</p>
+        </div>
+        <div class="services-item">
+            <img src="{% static 'images/exterior.png' %}" alt="carwash">
+            <h3>exterior washing</h3>
+            <p>You can count on Speed Driven to not only meet, 
+                but exceed all your needs and requests. 
+                Learn more about the services we provide below, 
+                and let us know if you’d like more information 
+                about a specific offering.</p>
+        </div>
+    </div>
+</div>
+<div id="body_our_work" class="body our-work">
+    <p class="title">what our objectives?</p>
+    <h1 class="title">Our work</h1>
+    <p class="content">We go above and beyond in order to show our clients why we're the best option for their needs, which includes special features to ensure their top satisfaceion. Read below to learn more and contact us with for more questions and inquiries.</p>
+    <div class="our-work-image-list">
+        <img src="{% static 'images/blog-1.jpg' %}" alt="No Image Available"> 
+        <img src="{% static 'images/blog-2.jpg' %}" alt="No Image Available"> 
+        <img src="{% static 'images/blog-3.jpg' %}" alt="No Image Available"> 
+        <img src="{% static 'images/single.jpg' %}" alt="No Image Available"> 
+        <img src="{% static 'images/en detailing and interior.jpg' %}" alt="No Image Available"> 
+        <img src="{% static 'images/engine detail and exterior.jpg' %}" alt="No Image Available"> 
+        <img src="{% static 'images/engine detail and waxing.jpg' %}" alt="No Image Available"> 
+        <img src="{% static 'images/prem car wash.jpg' %}" alt="No Image Available">
+    </div>
+</div>
+<div id="body_about_us" class="body about-us">
+    <p class="title">about us</p>
+    <h1 class="title">Car washing and detailing</h1>
+    <div class="content">
+        <img src="{% static 'images/about.jpg' %}" alt="No Image Available">
+        <div class="description">
+            <p>
+                Since our founding, we’ve worked with numerous clients throughout the area. 
+                Great service begins and ends with experienced and friendly professionals, 
+                which is why we put so much consideration into selecting only the best to 
+                join our team. We complete projects efficiently and on schedule, 
+                and go above and beyond to form lasting relationships with our clients.
+            </p>
+            <ul>
+                <li><i class="far fa-check-circle"></i>  Seats washing</li>
+                <li><i class="far fa-check-circle"></i>  Vacuum cleaning</li>
+                <li><i class="far fa-check-circle"></i>  Interior wet cleaning</li>
+                <li><i class="far fa-check-circle"></i>  Window wiping</li> 
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="body_contact_us" class="body contact-us">
+    <p class="title">let us know you?</p>
+    <h1 class="title">contact us</h1> 
+    <div class="content">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15441.464001955743!2d121.0700804!3d14.6351536!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe12de9c1bc19c7ad!2sSpeed%20Driven%20Xavierville!5e0!3m2!1sen!2sph!4v1638755118616!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        <div class="contact-details">
+            <h3><i class="fas fa-map-marker-alt"></i> Details</h3> 
+            <p><i class="far fa-address-card"></i>  #67B Xavierville Ave, Brgy, Quezon City, 1108 Metro Manila</p> 
+            <p><i class="fas fa-phone"></i>  +63 916 647 9654</p> 
+            <p><i class="far fa-clock"></i> Mon - Sun, 8:00 am - 8:00 pm</p> 
+        </div> 
+
+        <form action="/" method="POST">
+            <h4>Send us a message</h4>
+            {% csrf_token %}
+            {{ form.f_name }} 
+            {{ form.l_name }} 
+            {{ form.email }} 
+            {{ form.subject }} 
+            {{ form.message }} 
+            <input type="submit" value="Send Message">
+        </form>
+    </div>
+    
+</div>
+<div id="body_book_now" class="body book-now">
+    <p class="title">washing plan?</p>
+    <h1 class="title">Choose your service</h1> 
+    <div class="price-item-container">
+
+        {% show_services %}
+ 
+    </div>
+</div>
+<div class="footer">
+    <div class="container">
+        <div class="items">
+            <h4>Get in touch</h4>
+            <div class="contact-details"> 
+                <p><i class="fas fa-map-marker-alt"></i>  #67B Xavierville Ave, Brgy, Quezon City, 1108 Metro Manila</p> 
+                <p><i class="fas fa-phone"></i>  +63 916 647 9654</p> 
+                <p><i class="far fa-clock"></i> Mon - Sun, 8:00 am - 8:00 pm</p> 
+            </div> 
+            <div class="social-media-links">
+                <a href=""><i class="fab fa-facebook"></i></a>
+                <a href=""><i class="fab fa-twitter"></i></a>
+                <a href=""><i class="fab fa-youtube"></i></a>
+                <a href=""><i class="fab fa-instagram"></i></a>
+                <a href=""><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        <div class="items">
+            <h4>popular links</h4>
+            <div class="footer-links"> 
+                <a href="#body_home">Home</a>
+                <a href="#body_services">services</a>
+                <a href="#body_our_work">our work</a>
+                <a href="#body_about_us">about us</a>
+                <a href="#body_contact_us">contact us</a>
+                <a href="#body_book_now">book now</a>
+            </div>
+        </div>
+    </div>
+    <div class="container-copyright">
+        <p>© <a href="#">https://speeddrivenxavierville.com</a>, All Right Reserved.</p>
+    </div>
+</div>
+<button id="back-to-top" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+{% endblock body_block %}
+{% block additional_js %}  
+<script src="{% static 'js/index.js' %}"></script>
+{% endblock additional_js %}

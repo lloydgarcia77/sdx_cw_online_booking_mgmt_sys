@@ -1,0 +1,81 @@
+{% extends 'booking/base.html' %}
+{% load static %}
+{% load humanize%}
+{% load custom_tags %}
+
+{% block title %}
+| My Transactions
+{% endblock title%} 
+
+
+{% block additional_css %}        
+{% endblock additional_css %} 
+
+{% block nav_my_transactions %}
+<li class="nav-item active">
+    <a class="nav-link" href="{% url 'booking:my_transactions' %}">
+        <i class="fas fa-receipt"></i>
+        <span>My Transactions</span></a>
+</li>
+{% endblock nav_my_transactions %}
+
+{% block body_block %} 
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">My Transactions for Speed Driven Xavierville</h1>
+</div>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-danger">Booking Transactions List</h6>
+    </div>
+    <div class="card-body" >  
+        <!-- <div id="datepicker"></div> -->
+        <div class="table-horizontal-scroll">
+            <table id="table-bookings" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th class="text-center">ID</th> 
+                        <th class="text-center">Service</th> 
+                        <th class="text-center">Date</th> 
+                        <th class="text-center">Slot</th>  
+                        <th class="text-center">Time Slot</th>
+                        <th class="text-center">Date Created</th> 
+                        <th class="text-center" style="width: 20%;">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for o in bookings %}
+                     <tr>
+                         <td>{{ o.id }}</td> 
+                         <td>{{ o.service }}</td>
+                         <td>{{ o.date }}</td>
+                         <td>{{ o.slot }}</td>
+                         <td>{{ o.time_slot|time }}</td>
+                         <td>{{ o.date_created|naturaltime }}</td> 
+                         <td> 
+                             <!-- Message when deleting -->
+                            <a href="{{ o.get_absolute_url }}" class="btn btn-warning btn-sm view">
+                                <i class="fas fa-eye"></i> View Details
+                            </a> 
+                            <a href="{{ o.get_absolute_url_delete }}" class="btn btn-danger btn-sm delete">
+                                <i class="fas fa-trash-alt"></i> Delete Booking
+                            </a> 
+                         
+                         </td>
+                     </tr>
+                    {% endfor %}
+                </tbody>
+            </table> 
+        </div> 
+
+    </div>
+</div>
+ 
+
+{% endblock body_block %}
+
+{% block additional_js %} 
+<script src="{% static 'js/getcookies.js' %}"></script> 
+<script src="{% static 'js/bookings/client/my_transactions/my_transactions.js' %}"></script> 
+ 
+{% endblock additional_js %}

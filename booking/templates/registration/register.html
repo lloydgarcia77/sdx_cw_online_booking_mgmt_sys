@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+| Login Page
+{% endblock title%}
+ 
+{% block additional_css %} 
+<link rel="stylesheet" href="{% static 'css/registration/registration.css' %}">
+<link rel="stylesheet" href="{% static 'css/registration/user-registration.css' %}"> 
+<link rel="stylesheet" href="{% static 'css/registration/custom-alert-large.css' %}"> 
+ 
+{% endblock additional_css %} 
+
+
+{% block body_block %} 
+<div class="container">
+    <div class="form-container">
+        <form method="POST"  enctype="multipart/form-data" > 
+            {% csrf_token %} 
+            <div class="form-header">
+                <h2>Sign up for an account</h2>
+
+                {% if form.errors %}
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> 
+                        <h4><i class="icon fa fa-ban"></i> Form Validation Error!</h4>   
+                            <p style="padding-left: 10px;">Please correct error below: </p>
+                            {{ form.email.errors }} 
+                            {{ form.image.errors }}
+                            {{ form.f_name.errors }}
+                            {{ form.m_name.errors }}
+                            {{ form.l_name.errors }}
+                            {{ form.gender.errors }}
+                            {{ form.dob.errors }}
+                            {{ form.age.errors }}
+                            {{ form.address.errors }}
+                            {{ form.contact_no.errors }} 
+                            {{ form.password2.errors }}  
+                
+                    </div>
+                {% endif %} 
+            </div>
+            <div class="form-body">
+                <div class="personal-details">
+                    <h1>Personal details</h1> 
+                    {{ form.f_name }}
+                    {{ form.m_name }}
+                    {{ form.l_name }}
+                    {{ form.age }}
+                    {{ form.dob }} 
+                    {{ form.contact_no }}
+                    {{ form.gender }}
+                    {{ form.address }}
+                    {{ form.image }}
+                </div>
+                <div class="account-details">
+                    <h1>Account details</h1>
+                    {{ form.email }}
+                    <div class="password-info">
+                        <p><i class="far fa-check-circle"></i> The password must not be too short. It must contain at least 8 characters.</p>
+                        <p><i class="far fa-check-circle"></i> The password must not be too common.</p>
+                        <p><i class="far fa-check-circle"></i> The password must contain at least 1 digit, 0-9.</p>
+                        <p><i class="far fa-check-circle"></i> The password must contain at least 1 uppercase letter, A-Z.</p>
+                        <p><i class="far fa-check-circle"></i> The password must contain at least 1 symbol: ()[]{}|\`~!@#$%^&*_-+=;:"",<>./?</p>
+                    </div>
+                    {{ form.password1 }}
+                    {{ form.password2 }}
+                </div> 
+            </div>
+            <div class="form-footer">
+                <a href="{% url 'login' %}" class="btn back"><i class="fas fa-arrow-left"></i> back to login</a>
+              
+                <button type="submit" class="btn submit"><i class="fas fa-save"></i> submit</button> 
+            </div>
+   
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock body_block %}
+
+{% block additional_js %}  
+<script src="{% static 'js/registration/registrations.js' %}"></script>
+<script src="{% static 'js/registration/custom-alert.js' %}"></script>
+{% endblock additional_js %}

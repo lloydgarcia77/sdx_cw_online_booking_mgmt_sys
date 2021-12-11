@@ -1,0 +1,76 @@
+{% extends 'booking/base.html' %}
+{% load static %}
+{% load humanize%}
+
+{% block title %}
+| My Bookings
+{% endblock title%} 
+
+
+{% block additional_css %}        
+{% endblock additional_css %} 
+
+{% block nav_my_bookings %}
+<li class="nav-item active">
+    <a class="nav-link" href="{% url 'booking:my_bookings' %}">
+        <i class="fas fa-address-book"></i>
+        <span>My Bookings</span></a>
+</li>
+{% endblock nav_my_bookings %}
+
+{% block body_block %} 
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Speed Driven Xavierville </h1>
+</div>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-danger">Booking Service List</h6>
+    </div>
+    <div class="card-body" >  
+        <!-- <div id="datepicker"></div> -->
+        <div class="table-horizontal-scroll">
+            <table id="table-services" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th class="text-center">ID</th> 
+                        <th class="text-center">Name</th> 
+                        <th class="text-center">Vehicle Type</th> 
+                        <th class="text-center">Price</th>  
+                        <th class="text-center"  style="width: 30%;">Description</th>
+                        <th class="text-center">Duration</th> 
+                        <th class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for o in objs %}
+                     <tr>
+                         <td>{{ o.id }}</td> 
+                         <td>{{ o.name }}</td>
+                         <td>{{ o.vehicle_type }}</td>
+                         <td>{{ o.price|intcomma }}</td>
+                         <td>{{ o.desription }}</td>
+                         <td>{{ o.duration }}</td> 
+                         <td> 
+                            <a href="{{ o.get_absolute_url_set_schedule }}" class="btn btn-success btn-sm edit">
+                                <i class="fas fa-edit"></i> Book Now
+                            </a> 
+                         
+                         </td>
+                     </tr>
+                    {% endfor %}
+                </tbody>
+            </table> 
+        </div> 
+
+    </div>
+</div>
+ 
+
+{% endblock body_block %}
+
+{% block additional_js %} 
+<script src="{% static 'js/getcookies.js' %}"></script> 
+<script src="{% static 'js/bookings/client/my_bookings/my_bookings.js' %}"></script> 
+ 
+{% endblock additional_js %}

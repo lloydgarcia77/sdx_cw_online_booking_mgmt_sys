@@ -1,0 +1,88 @@
+{% extends 'booking/base.html' %}
+{% load static %}
+{% block title %}
+| Users Management
+{% endblock title%} 
+
+
+{% block additional_css %}    
+{% endblock additional_css %} 
+
+{% block nav_staff %} 
+<li class="nav-item active">
+    <a class="nav-link" href="{% url 'booking:staff' %}">
+        <i class="fas fa-user-tie"></i>
+        <span>Staffs</span></a>
+</li> 
+{% endblock nav_staff %}
+
+{% block body_block %} 
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Staff Management</h1>
+    <a href="{% url 'booking:add_staff' %}" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i class="fas fa-user-tie fa-sm text-white-50"></i> Add New Staff</a>
+</div>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-danger">Staff Table</h6>
+    </div>
+    <div class="card-body" > 
+        <div class="table-horizontal-scroll">
+            <table id="table-staffs" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th class="text-center">ID</th> 
+                        <th class="text-center">Image</th> 
+                        <th class="text-center">Full Name</th>  
+                        <th class="text-center">Gender</th>
+                        <th class="text-center">D.O.B</th>
+                        <th class="text-center">Age</th> 
+                        <th class="text-center">Address</th>
+                        <th class="text-center">Contact #</th>    
+                        <th class="text-center">Position</th>   
+                        <th class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for u in staffs %}
+                     <tr>
+                         <td>{{ u.id }}</td>
+                         <td> 
+                            {% if u.image %}  
+                            <img src="{{ u.image.url }}" class="img-profile rounded-circle" alt="User Image" height="50" width="50">
+                            {% else %}
+                            <img class="img-profile rounded-circle"
+                                src="{% static 'sbadmin2/img/undraw_profile.svg' %}" alt="User Image" height="50" width="50">
+                            {% endif %} 
+                         </td> 
+                         <td>{{ u.get_full_name }}</td>
+                         <td>{{ u.gender }}</td>
+                         <td>{{ u.dob }}</td>
+                         <td>{{ u.age }}</td> 
+                         <td>{{ u.address }}</td>
+                         <td>{{ u.contact_no }}</td>  
+                         <td>{{ u.position }}</td>
+                         <td> 
+                            <a href="{{ u.get_absolute_url }}" class="btn btn-warning btn-circle btn-sm">
+                                <i class="fas fa-edit"></i>
+                            </a> 
+                            </a> 
+                            <a href="{{ u.get_absolute_url_delete }}" class="btn btn-danger btn-circle btn-sm delete">
+                                <i class="fas fa-user-minus"></i>
+                            </a>
+                         </td>
+                     </tr>
+                    {% endfor %}
+                </tbody>
+            </table> 
+        </div> 
+    </div>
+</div>
+ 
+
+{% endblock body_block %}
+
+{% block additional_js %} 
+<script src="{% static 'js/getcookies.js' %}"></script>
+<script src="{% static 'js/bookings/staff/staff.js' %}"></script>
+{% endblock additional_js %}

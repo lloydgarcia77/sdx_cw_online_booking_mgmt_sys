@@ -1,0 +1,191 @@
+{% extends 'booking/base.html' %}
+{% load static %}
+{% block title %}
+| Add User
+{% endblock title%} 
+
+
+{% block additional_css %} 
+<style>
+    textarea{
+        max-height: 100px;
+        min-height: 50px;
+    } 
+    .password-info{
+        font-size: 15px;
+        background: #F8F9FC;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    .password-info i{
+        color: #1CC88A;
+    }
+    .password-info p{
+        margin: 0;
+    }
+</style>
+{% endblock additional_css %} 
+
+
+{% block nav_users %} 
+<li class="nav-item active">
+    <a class="nav-link" href="{% url 'booking:users' %}">
+        <i class="fas fa-users"></i>
+        <span>Users</span></a>
+</li> 
+{% endblock nav_users %}
+
+{% block body_block %} 
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Add New User Form</h1>
+</div>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-danger">User's Profile Details</h6>
+    </div>
+    <div class="card-body">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %} 
+            <div class="row">
+                {% if form.errors %}
+                <div class="col-xl-12 col-md-6 mb-4">
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h4><i class="icon fa fa-ban"></i>Oops! Form Error!</h4>
+                        <p><strong>Please fix the error and try to save again!</strong></p>
+                        <p>{{form.errors}} </p>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            <div class="row">
+                <div class="col-xl-9 col-md-6 mb-4">
+                    <div class="row">
+                        <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="form-group">
+                                <label>First Name:</label>
+                                {{ form.f_name }}
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="form-group">
+                                <label>Middle Name:</label>
+                                {{ form.m_name }}
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="form-group">
+                                <label>Last Name:</label>
+                                {{ form.l_name }}
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="form-group">
+                                <label>Date of Birth:</label>
+                                {{ form.dob }}
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="form-group">
+                                <label>Gender:</label>
+                                {{ form.gender }}
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="form-group">
+                                <label>Age:</label>
+                                {{ form.age }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="form-group">
+                                <label>Contact #:</label>
+                                {{ form.contact_no }}
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-md-6 mb-4"> 
+                            <div class="form-group">
+                                <label style="display: block;"><strong>Image:</strong></label>
+                                {{ form.image }}
+                            </div>
+                        </div> 
+                        <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="form-group">
+                                <label>Address:</label>
+                                {{ form.address }}
+                            </div>
+                        </div> 
+                    </div> 
+                </div> 
+
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="row">
+                        <div class="col-xl-12 col-md-6 mb-4"> 
+                            <div class="form-group">
+                                <label>Email:</label>
+                                {{ form.email }}
+                            </div>
+                        </div> 
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-xl-12 col-md-6 mb-4"> 
+                            <div class="password-info">
+                                <p><i class="far fa-check-circle"></i> The password must not be too short. It must contain at least 8 characters.</p>
+                                <p><i class="far fa-check-circle"></i> The password must not be too common.</p>
+                                <p><i class="far fa-check-circle"></i> The password must contain at least 1 digit, 0-9.</p>
+                                <p><i class="far fa-check-circle"></i> The password must contain at least 1 uppercase letter, A-Z.</p>
+                                <p><i class="far fa-check-circle"></i> The password must contain at least 1 symbol: ()[]{}|\`~!@#$%^&*_-+=;:"",<>./?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-12 col-md-6 mb-4"> 
+                            <div class="form-group">
+                                <label>Password:</label>
+                                {{ form.password1 }}
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-12 col-md-6 mb-4"> 
+                            <div class="form-group">
+                                <label>Confirm Password:</label>
+                                {{ form.password2 }}
+                            </div>
+                        </div>      
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+            <div class="float-right"> 
+                <a href="{% url 'booking:users' %}" class="btn btn-secondary btn-user">
+                    <i class="fas fa-arrow-left fa-sm text-white-50"></i>
+                    Back
+                </a>
+                <button type="reset" class="btn btn-warning btn-user">
+                    <i class="fas fa-undo-alt fa-sm text-white-50"></i>
+                    Reset
+                </button>
+                <button type="submit" class="btn btn-primary btn-user">
+                    <i class="fas fa-save fa-sm text-white-50"></i>
+                    Save
+                </button>
+            </div>
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock body_block %}
+
+{% block additional_js %} 
+{% endblock additional_js %}

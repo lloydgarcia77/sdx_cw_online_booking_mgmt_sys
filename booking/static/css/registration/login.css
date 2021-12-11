@@ -1,0 +1,127 @@
+
+/* Form cotnainer */
+div.form-container{
+    position: relative; 
+    background: rgba(255, 255, 255, 0.25);
+    width: 80%;
+    height: 80%;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    
+}
+/* Logo Details */
+div.form-container .logo-details {
+    position: relative;
+    text-align: center;
+    width: 50%;
+}
+div.form-container .logo-details img{
+    height: 400px;
+    width: 400px; 
+}
+
+div.form-container .logo-details h1{
+    color: #FFF;
+    font-family: 'Fjalla One', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 3rem;
+    font-weight: 400;
+}
+
+/* Form */
+
+div.form-container form{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    row-gap: 10px;
+}
+ 
+div.form-container form h1{
+    color: #FFF; 
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+div.form-container form .input-container{
+    position: relative;
+    background: #E5E5E5;
+    height: 30px;
+    width: 280px;
+    padding: 10px;
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+div.form-container form .input-container i{
+    color: #727272;
+    line-height: 30px;
+    margin: 0 10px 0 10px;
+}
+div.form-container form .input-container input{
+    border: none;
+    background: transparent;
+    outline: none;
+    box-sizing: border-box;
+    width: 240px;
+    letter-spacing: 1px;
+    font-size: 14px;
+    color: #727272;
+}
+
+div.form-container form input[type="submit"]{
+    height: 50px;
+    width: 280px;
+    background: #54BA43;
+    color: #FFF;
+    border: none;
+    border-radius: 25px;
+    margin-top: 40px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 15px;
+    transition: 0.5s ease;
+}
+div.form-container form input[type="submit"]:hover{
+    background: #F88935;
+    transition: 0.5s ease;
+    letter-spacing: 2px;
+}
+
+div.form-container form .links p{
+    color: #FFF;
+}
+
+div.form-container form .links a{
+    text-decoration: none;
+    color: #FFF;
+    font-size: 13px;
+    font-weight: 400; 
+    text-transform: capitalize;
+}
+
+div.form-container form .links p:last-child{
+    text-align: center;
+    margin-top: 50px;
+}
+
+ 
+
+div.form-container form .links p:last-child a{
+
+    text-transform: capitalize;
+    font-weight: 500;
+    font-size: 18px;
+}

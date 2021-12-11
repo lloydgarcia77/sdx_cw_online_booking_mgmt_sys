@@ -1,0 +1,172 @@
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,  
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active, 
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus{
+    -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px !important;
+    -webkit-text-fill-color: #727272; 
+}
+
+h1{
+    margin: 0 0 10px 0;
+    text-transform: capitalize;
+    color: #FFF;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+h2{
+    margin: 0 0 30px 0;
+    text-align: center;
+    font-family: 'Poppins' sans-serif;
+    text-transform: uppercase;
+    color: #E81C2E;
+    text-decoration: underline;
+    letter-spacing: 1px;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+textarea{
+    resize: vertical;
+    max-height: 70px;
+    min-height: 50px;
+    position: relative;
+    height: 50px; 
+    border: none;
+    border-radius: 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    background: #FFF;   
+
+}
+div.form-container{
+    position: relative; 
+    background: rgba(255, 255, 255, 0.25); 
+    padding: 50px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; 
+    
+}
+ 
+.form-container form .form-body{
+    padding: 10px;
+    position: relative;
+    display: flex;  
+    flex-direction: row;  
+    flex-wrap: nowrap;
+    column-gap: 50px;
+}
+
+ 
+.form-container form input[type='text'], input[type='email'], input[type='password'], input[type='number'], input[type='date']{
+    position: relative;
+    height: 50px;
+    width: 300px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    background: #FFF;
+    padding: 0 30px 0 30px;
+    font-size: 16px; 
+}
+
+.form-container form .form-body .personal-details, .form-body .account-details{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.form-container form .form-body .personal-details select{
+    position: relative;
+    height: 50px; 
+    border: none;
+    border-radius: 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    background: #FFF;
+    padding: 0 30px 0 30px;
+    font-size: 16px; 
+} 
+
+.form-container form .form-body .personal-details input[type='file']{
+    position: relative;
+    height: 50px; 
+    border: none;
+    border-radius: 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    background: #EFEFEF;
+    padding: 0 30px 0 30px;
+    font-size: 16px; 
+    line-height: 50px;
+}
+.form-container form .form-body .personal-details input[type='file']::before{
+    content: "Image: ";
+}
+
+.account-details .password-info{
+    width: 340px; 
+    padding: 10px;
+    font-size: 14px;
+    color: #FFF;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    border-radius: 5px;
+    letter-spacing: 1px;
+}
+
+.account-details .password-info i{
+    color: chartreuse;
+    margin-right: 10px;
+}
+
+
+.form-container form .form-footer{
+    margin-top: 30px;  
+    float: right;
+}
+
+.form-container form .form-footer .btn{
+    position: relative;
+    display: inline-block;
+    width: 150px;
+    height: 50px; 
+    text-align: center;
+    line-height: 50px;
+    text-decoration: none;
+    border-radius: 5px;
+    color: #FFF;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 12px;
+}
+
+.btn.back{
+    background: #36B9CC;
+    margin-right: 10px;
+    border: none;
+    transition: 0.5s ease;
+}
+
+.btn.back:hover{
+    background: #2E9DAE;
+    transition: 0.5s ease;
+}
+
+.btn.submit{
+    background: #1CC88A;
+    transition: 0.5s ease; 
+    border: none;
+    /* Aligns the button on href */
+    vertical-align: top;
+    cursor: pointer; 
+}
+
+.btn.submit:hover{
+    background: #18AA75;
+    transition: 0.5s ease;
+}

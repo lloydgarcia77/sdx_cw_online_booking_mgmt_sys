@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+| Password Reset Complete
+{% endblock title%}
+ 
+{% block additional_css %} 
+<link rel="stylesheet" href="{% static 'css/registration/registration.css' %}">  
+<link rel="stylesheet" href="{% static 'css/registration/forgot-password.css' %}"> 
+ 
+{% endblock additional_css %} 
+
+
+{% block body_block %} 
+<div class="container">
+    <div class="form-container">
+        <h1>Inquiry Successfully Sent</h1>
+        
+        <p>Thank you for sending us a message. We will soon to send you a message on your email address about your concern.</p>
+        
+
+        <a href="{% url 'booking:index_page' %}"><i class="fas fa-arrow-left"></i> back to home</a>
+    </div>
+</div>
+
+{% endblock body_block %}
+   

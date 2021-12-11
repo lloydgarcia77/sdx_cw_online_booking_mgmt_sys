@@ -1,0 +1,84 @@
+
+.alert{
+    position: relative;
+    padding: 0 30px 0 10px; 
+    font-size: 16px;
+    text-transform: capitalize; 
+    width: 300px;
+    border-radius: 5px;
+    display: flex; 
+    align-items: center;
+    height: 50px;
+    flex-wrap: nowrap;
+    column-gap: 10px;
+}
+
+
+
+.alert h4{
+    margin: 0;
+}
+
+.alert h4 i{
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 50%;
+    color: #FFF;
+    margin-right: 5px;
+}
+
+.alert button{
+    position: absolute; 
+    right: 0;
+    height: 50px;
+    width: 50px;
+    font-weight: 800;
+    font-size: 25px;
+    border: none;
+    background: none;
+    color: #C450C1;
+    cursor: pointer;
+}
+
+
+.alert-info{
+    background: rgba( 204, 229, 255, 0.7);
+    border: solid 1px #B8DAFF;
+    color: #00408D;
+}
+
+.alert-info h4 i{
+    background: #00408D;
+}
+
+.alert-success{
+    background: rgba( 212, 237, 218, 0.7);
+    border: solid 1px #C3E6CB;
+    color: #155724;
+}
+
+.alert-success h4 i{
+    background: #155724;    
+}
+
+.alert-warning{
+    background: rgba( 255, 243, 205, 0.7);
+    border: solid 1px #FFEEBA;
+    color: #856404;
+}
+
+.alert-warning h4 i{
+    background: #856404;
+}
+
+.alert-danger{ 
+    background: rgba(248, 215, 218, 0.7);
+    border: solid 1px #F5C6CB;
+    color: #721C24;
+}
+
+.alert-danger h4 i{
+    background: #721C24;    
+}

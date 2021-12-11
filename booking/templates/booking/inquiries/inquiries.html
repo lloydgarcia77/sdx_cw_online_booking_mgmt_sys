@@ -1,0 +1,79 @@
+{% extends 'booking/base.html' %}
+{% load static %}
+{% load humanize %}
+{% load custom_tags %}
+
+{% block title %}
+| Inquiries
+{% endblock title%} 
+
+
+{% block additional_css %}     
+{% endblock additional_css %} 
+
+{% block nav_inquiries %}
+<li class="nav-item active">
+    <a class="nav-link" href="{% url 'booking:inquiries' %}">
+        <i class="fas fa-question"></i>
+        <span>Inquiries</span></a>
+</li>  
+{% endblock nav_inquiries %}
+  
+{% block body_block %} 
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Visitor Inquiries</h1>
+</div>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-danger">Inquiries Table</h6>
+    </div>
+    <div class="card-body" > 
+        <div class="table-horizontal-scroll">
+            <table id="table-inquiries" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th class="text-center">ID</th> 
+                        <th class="text-center">First Name</th> 
+                        <th class="text-center">Last Name</th>  
+                        <th class="text-center">E-Mail</th>
+                        <th class="text-center">Subject</th>  
+                        <th class="text-center" style="width: 30%;">Message</th>
+                        <th class="text-center">Date Created</th> 
+                        <th class="text-center" style="width: 10%;">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for o in inquiries %}
+                     <tr> 
+                        <td>{{ o.id }}</td>
+                        <td>{{ o.f_name }}</td> 
+                        <td>{{ o.l_name }}</td>
+                        <td>{{ o.email }}</td>
+                        <td>{{ o.subject }}</td>
+                        <td>{{ o.message }}</td>
+                        <td>{{ o.date_created|naturaltime }}</td> 
+                        <td>   
+                            <div class="btn-group" role="group" aria-label="button group"> 
+                                <a href="{{ o.get_absolute_url_delete }}" class="btn btn-danger btn-sm delete">
+                                    <i class="fas fa-trash-alt"></i>  Delete
+                                </a> 
+                            
+                            </div>
+                         
+                         </td>
+                     </tr>
+                    {% endfor %}
+                </tbody>
+            </table> 
+        </div> 
+    </div>
+</div>
+ 
+
+{% endblock body_block %}
+
+{% block additional_js %} 
+<script src="{% static 'js/getcookies.js' %}"></script>
+<script src="{% static 'js/bookings/inquiries/inquiries.js' %}"></script>
+{% endblock additional_js %}

@@ -1,0 +1,32 @@
+{% load humanize %}
+{% load custom_tags %}
+<form> 
+    <div class="modal-header">
+        <h5 class="modal-title" id="modalDefaultLabel">Booking Details</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <h5>Service Details:</h5>
+        <ul>
+            <li>{{ obj.service.name }}</li> 
+            <li>{{ obj.service.vehicle_type}}</li> 
+            <li>₱-{{ obj.service.price|intcomma  }}</li> 
+            <li>{{ obj.service.desription }}</li> 
+            <li>{{ obj.service.duration }}</li>  
+        </ul>
+
+        <h5>Booking Details:</h5>
+        <ul>
+            <li>{{ obj.date }}</li>  
+            <li>{{ obj.slot }}</li>  
+            <li>{{ obj.time_slot|time }}</li>  
+            <li>{{ obj.date_created|naturaltime }}</li> 
+        </ul>
+        
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button> 
+    </div>
+</form>

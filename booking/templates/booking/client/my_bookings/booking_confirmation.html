@@ -1,0 +1,15 @@
+<form class="booking-confirmation" method="POST" data-url="{{ obj.get_absolute_url_set_schedule }}">
+    {% csrf_token %}
+    <div class="modal-header">
+        <h5 class="modal-title" id="modalDefaultLabel">Booking Confirmation</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <div class="modal-body"> 
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-success" type="submit">Proceed</button> 
+    </div>
+</form>
