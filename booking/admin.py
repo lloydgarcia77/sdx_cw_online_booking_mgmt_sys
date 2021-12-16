@@ -146,8 +146,8 @@ class InvoiceBookingAdmin(ImportExportModelAdmin):
 admin.site.register(models.InvoiceBookingModel, InvoiceBookingAdmin)
 
 class WalkinInvoiceAdmin(ImportExportModelAdmin):
-    list_display = ('id', 'service', 'date', 'slot',  'date_created')
-    list_editable = ('service', 'date', 'slot',)
+    list_display = ('id', 'service', 'date', 'time_from', 'time_to', 'slot',  'date_created')
+    list_editable = ('service', 'time_from', 'time_to', 'slot',)
     list_filter = ('service', 'slot', 'date')
     search_fields = ('id', 'date', 'slot',)  
     ordering = ['id',]

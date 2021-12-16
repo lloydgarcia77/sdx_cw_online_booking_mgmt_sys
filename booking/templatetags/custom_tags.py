@@ -14,7 +14,12 @@ def custom_date_format(date):
             date = date.strftime("%b. %d, %Y")  
             # date = date.strftime("%b. %d, %Y, %I:%M %p")  
     return date
-
+@register.filter
+def custom_time_format(time):
+    if time != None:      
+        
+        time = time.strftime("%I:%M %p")   
+    return time
 
 
 @register.filter

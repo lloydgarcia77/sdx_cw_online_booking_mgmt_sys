@@ -124,6 +124,8 @@
                         <th class="text-center">Date</th>
                         <th class="text-center">Slot</th>
                         <th class="text-center">Cost</th>
+                        <th class="text-center">Time From</th>
+                        <th class="text-center">Time To</th>
                         <!--<th class="text-center">Date Created</th>-->
                         <th class="text-center" style="width: 15%;">Action</th>
                     </tr>
@@ -138,6 +140,8 @@
                          <td>{{ o.slot }}</td>
                          <td>{{ o.service.price }}</td>
                          <!--<td>{{ o.date_created|custom_date_format }}</td>-->
+                         <td>{{ o.time_from|custom_time_format }}</td>
+                         <td>{{ o.time_to|custom_time_format }}</td>
                          <td>
 
                             <div class="btn-group" role="group" aria-label="button group">
@@ -156,6 +160,8 @@
                 <tfoot >
                     <tr class="text-center">
                         <th>Total:</th>
+                        <th></th>
+                        <th></th>
                         <th></th>
                         <th></th>
                         <th></th>

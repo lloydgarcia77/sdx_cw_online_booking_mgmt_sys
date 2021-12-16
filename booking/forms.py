@@ -701,10 +701,32 @@ class ServicesForm(forms.ModelForm):
 
 class WalkinInvoiceForm(forms.ModelForm):
 
+  
     class Meta:
         model = models.WalkinInvoiceModel
         exclude = ('date_created','id')
-        widgets = {'date' : DateInput(format=('%Y-%m-%d'), attrs = {'class': 'form-control bg-light border-0 small', 'required': 'required'})}
+        widgets = {
+            'date' : DateInput(format=('%Y-%m-%d'), attrs = {'class': 'form-control bg-light border-0 small', 'required': 'required'}),
+            # 'time_from' : forms.TimeInput(format='%I:%M %p', attrs={'type': 'time', 'class': 'form-control bg-light border-0 small', 'required': 'required'}),
+            # 'time_to' : forms.TimeInput(format='%I:%M %p', attrs={'type': 'time', 'class': 'form-control bg-light border-0 small', 'required': 'required'}),
+            'time_from' : forms.TimeInput(format='%H:%M', attrs={'type': 'time', 'class': 'form-control bg-light border-0 small', 'required': 'required'}),
+            'time_to' : forms.TimeInput(format='%H:%M', attrs={'type': 'time', 'class': 'form-control bg-light border-0 small', 'required': 'required'}),
+            }
+        
+        # time_from = forms.TimeField( 
+        #     widget=forms.TimeInput(
+        #         format='%I:%M', attrs={'type': 'time'}
+        #     ),
+        #     input_formats=('%I:%M',),
+        #     required=True,
+        # )
+        # time_to = forms.TimeField( 
+        #     widget=forms.TimeInput(
+        #         format='%I:%M', attrs={'type': 'time'}
+        #     ),
+        #     input_formats=('%I:%M',),
+        #     required=True,
+        # )
 
     def __init__(self, *args, **kwargs):
         super(WalkinInvoiceForm, self).__init__(*args, **kwargs) 
@@ -719,6 +741,20 @@ class WalkinInvoiceForm(forms.ModelForm):
             'class': 'form-control bg-light border-0 small',  
             'required': 'required',
         } 
+        # self.fields['time_from'].widget.attrs = { 
+        #     'type' : 'time',
+        #     'min' : '09:00',
+        #     'max' : '18:00',
+        #     'class': 'form-control bg-light border-0 small',   
+        #     'required': 'required',
+        # } 
+        # self.fields['time_to'].widget.attrs = { 
+        #     'type' : 'time',
+        #     'min' : '09:00',
+        #     'max' : '18:00',
+        #     'class': 'form-control bg-light border-0 small',  
+        #     'required': 'required',
+        # } 
 
         self.fields['slot'].widget.attrs = { 
             'class': 'form-control bg-light border-0 small',  

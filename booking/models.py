@@ -164,14 +164,7 @@ class Staff(models.Model):
         return reverse("booking:delete_staff", args=[settings.SIGNER.sign(self.id),])
 
 
-class InquiriesModel(models.Model):
-<<<<<<< HEAD
-
-
-=======
-  
- 
->>>>>>> 36340217edb989eb73a67af29a03fce95131e30b
+class InquiriesModel(models.Model): 
     f_name = models.CharField(max_length=100,)
     l_name = models.CharField(max_length=100,)
     subject = models.CharField(max_length=100,)
@@ -330,7 +323,9 @@ class WalkinInvoiceModel(models.Model):
     )
     name = models.CharField(max_length=100)
     service = models.ForeignKey(ServicesModel, on_delete=models.CASCADE, related_name="fk_wim_service")
-    date = models.DateField()
+    date = models.DateField(auto_now_add=True) 
+    time_from = models.TimeField(blank=True, null=True)
+    time_to = models.TimeField(blank=True, null=True)
     slot = models.CharField(max_length=10, choices=SLOT, default='Slot 1')
     date_created = models.DateTimeField(auto_now_add=True)
 
@@ -346,6 +341,8 @@ class WalkinInvoiceModel(models.Model):
             "slot":self.slot,
             "price":self.service.price,
             "date_created":date_created.strftime("%b. %d, %Y") ,
+            "time_from":self.time_from.strftime("%I:%M %p") ,
+            "time_to":self.time_to.strftime("%I:%M %p") ,
             "edit_url":self.get_absolute_url(),
             "delete_url":self.get_absolute_url_delete(),
         }

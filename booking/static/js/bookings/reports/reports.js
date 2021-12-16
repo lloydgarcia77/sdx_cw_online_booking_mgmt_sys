@@ -122,7 +122,7 @@ $(document).ready(function () {
         "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]], // Show all
         'columnDefs': [
             {
-            'targets': [6],
+            'targets': [8],
             'orderable': false
             }
         ],
@@ -209,7 +209,8 @@ $(document).ready(function () {
                         `<td>${x.date}</td>`,
                         `<td>${x.slot}</td>`,
                         `<td>${x.price}</td> `,
-                        `<td>${x.date_created}</td> `,
+                        `<td>${x.time_from}</td> `,
+                        `<td>${x.time_to}</td> `,
                         `<td>
                             <div class="btn-group" role="group" aria-label="button group">
                                 <a href="${x.edit_url}" class="btn btn-warning btn-sm edit">
@@ -283,8 +284,10 @@ $(document).ready(function () {
                     row_data[1] = `<td>${x.name}</td>`;
                     row_data[2] = `<td>${x.service}</td>`;
                     row_data[3] = `<td>${x.date}</td>`;
-                    row_data[4] =  `<td>${x.slot}</td>`;
+                    row_data[4] = `<td>${x.slot}</td>`;
                     row_data[5] = `<td>${x.price}</td>`;
+                    row_data[6] = `<td>${x.time_from}</td>`;
+                    row_data[7] = `<td>${x.time_to}</td>`;
                     //https://legacy.datatables.net/ref
                     $('#table-walkin-bookings').dataTable().fnUpdate(row_data,row,undefined,false);
                     $('#table-walkin-bookings').DataTable().draw(false);
