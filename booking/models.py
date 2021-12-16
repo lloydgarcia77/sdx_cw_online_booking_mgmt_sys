@@ -165,8 +165,13 @@ class Staff(models.Model):
 
 
 class InquiriesModel(models.Model):
+<<<<<<< HEAD
 
 
+=======
+  
+ 
+>>>>>>> 36340217edb989eb73a67af29a03fce95131e30b
     f_name = models.CharField(max_length=100,)
     l_name = models.CharField(max_length=100,)
     subject = models.CharField(max_length=100,)
