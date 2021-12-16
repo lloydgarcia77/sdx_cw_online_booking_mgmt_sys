@@ -32,9 +32,9 @@ MEDIA_DIR = os.path.join(BASE_DIR, 'booking/media')
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['sdxcwbms77.pythonanywhere.com',]
 
 
 # Application definition
@@ -183,8 +183,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 AUTH_USER_MODEL = 'booking.User'
- 
+
 
 SIGNER = Signer(salt='extra')
 
- 
